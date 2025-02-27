@@ -112,7 +112,6 @@ internal class Hawk : RoleBase
             && AbilityLimit > 0
             && rnd.Next(100) >= KillerChanceMiss[target.PlayerId]
             && !target.IsNeutralApocalypse()
-            && !target.Is(CustomRoles.Jinx)
             && !target.Is(CustomRoles.CursedWolf)
             && (!target.Is(CustomRoles.NiceMini) || Mini.Age > 18);
     }
