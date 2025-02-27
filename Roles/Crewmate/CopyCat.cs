@@ -135,11 +135,11 @@ internal class CopyCat : RoleBase
                 CustomRoles.EvilTracker => CustomRoles.TrackerTOHE,
                 CustomRoles.AntiAdminer => CustomRoles.Telecommunication,
                 CustomRoles.Pursuer => CustomRoles.Deceiver,
-                CustomRoles.CursedWolf or CustomRoles.Jinx => CustomRoles.Veteran,
+                CustomRoles.CursedWolf => CustomRoles.Veteran,
                 CustomRoles.Swooper or CustomRoles.Wraith => CustomRoles.Chameleon,
                 CustomRoles.Vindicator or CustomRoles.Pickpocket => CustomRoles.Mayor,
                 CustomRoles.Opportunist or CustomRoles.BloodKnight or CustomRoles.Wildling => CustomRoles.Guardian,
-                CustomRoles.Cultist or CustomRoles.Virus or CustomRoles.Gangster => CustomRoles.Admirer,
+                CustomRoles.Cultist or CustomRoles.Virus or CustomRoles.Gangster or Ritualist => CustomRoles.Admirer,
                 CustomRoles.Arrogance or CustomRoles.Juggernaut or CustomRoles.Berserker => CustomRoles.Reverie,
                 CustomRoles.Baker when Baker.CurrentBread() is 0 => CustomRoles.Overseer,
                 CustomRoles.Baker when Baker.CurrentBread() is 1 => CustomRoles.Deputy,
@@ -148,9 +148,9 @@ internal class CopyCat : RoleBase
                 CustomRoles.PotionMaster when PotionMaster.CurrentPotion() is 1 => CustomRoles.Medic,
                 CustomRoles.Sacrifist => CustomRoles.Alchemist,
                 CustomRoles.MoonDancer => CustomRoles.Merchant,
-                CustomRoles.Ritualist => CustomRoles.Admirer,
                 CustomRoles.Trickster or CustomRoles.Illusionist => CustomRolesHelper.AllRoles.Where(role => role.IsEnable() && !role.IsAdditionRole() && role.IsCrewmate() && !BlackList(role)).ToList().RandomElement(),
-                _ => role
+                _ => role,
+                CustomRoles.Jinx => CustomRoles.Crusader
             };
         }
         if (role.IsCrewmate())
